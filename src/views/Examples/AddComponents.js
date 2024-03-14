@@ -4,47 +4,61 @@ class AddComponents extends React.Component {
 
     state = {
         title: '',
-        Salary: '',
+        salary: '',
     }
 
-    HandleChangetitle = (event) => {
+    handleChangeTitle = (event) => {
         this.setState({
             title: event.target.value
         })
     }
 
-    HandleChangeSalary = (event) => {
+    handleChangeSalary = (event) => {
         this.setState({
-            Salary: event.target.value
+            salary: event.target.value
         })
     }
 
-    HandleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        this.props.AddJob(this.state);
-        this.setState({})
+
+        if (this.state.title && this.state.salary) {
+            this.props.addNewJob({
+                id: Math.floor(Math.random() * 1001),
+                title: this.state.title,
+                salary: this.state.salary
+            });
+
+            this.setState({
+                title: '',
+                salary: '',
+            });
+        } else {
+            alert('Please fill in both title and salary');
+        }
     }
 
     render() {
         return (
             <>
-                <form>
-                    <label htmlFor="title">title Jobs:</label><br />
-                    <input type="text"
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="title">Title Jobs:</label><br />
+                    <input
+                        type="text"
                         value={this.state.title}
-                        onChange={(event) => this.HandleChangetitle(event)} /><br />
+                        onChange={this.handleChangeTitle} /><br />
 
-                    <label htmlFor="Salary">Salary:</label><br />
-                    <input type="text"
-                        value={this.state.Salary}
-                        onChange={(event) => this.HandleChangeSalary(event)} /><br />
+                    <label htmlFor="salary">Salary:</label><br />
+                    <input
+                        type="text"
+                        value={this.state.salary}
+                        onChange={this.handleChangeSalary} /><br />
 
                     <input type="submit" value="Submit" />
                 </form>
             </>
         )
     }
-
 }
 
 export default AddComponents;
