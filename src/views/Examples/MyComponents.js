@@ -1,13 +1,12 @@
 import React from 'react';
 import ChildComponent from './ChildComponents';
+import AddComponents from './AddComponents';
 
 class MyComponent extends React.Component {
 
 
 
     state = {
-        name: '',
-        age: '',
         arrJobs: [
             { id: 'job1', title: 'Embedded Dev', salary: '1200$', },
             { id: 'job2', title: 'Software Dev', salary: '1500$', },
@@ -15,22 +14,9 @@ class MyComponent extends React.Component {
         ]
     }
 
-    HandleChangeName = (event) => {
+    addNewJob = (job) => {
         this.setState({
-            name: event.target.value
-        })
-    }
-
-    HandleChangeAge = (event) => {
-        this.setState({
-            age: event.target.value
-        })
-    }
-
-
-    HandleChangeGender = (event) => {
-        this.setState({
-            gender: event.target.value
+            arrJobs: this.state.arrJobs.push(job)
         })
     }
 
@@ -38,20 +24,10 @@ class MyComponent extends React.Component {
         return (
             <>
                 <form>
-                    <label htmlFor="name">name:</label><br />
-                    <input type="text"
-                        value={this.state.name}
-                        onChange={(event) => this.HandleChangeName(event)} /><br />
-
-                    <label htmlFor="age">age:</label><br />
-                    <input type="text"
-                        value={this.state.age}
-                        onChange={(event) => this.HandleChangeAge(event)} /><br />
-
-                    <input type="submit" value="Submit" />
+                    <AddComponents />
                 </form>
 
-                <ChildComponent name={this.state.name} age={this.state.age} gender={this.state.gender} arrJobs={this.state.arrJobs} />
+                <ChildComponent arrJobs={this.state.arrJobs} />
 
             </>
         )
