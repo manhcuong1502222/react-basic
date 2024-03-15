@@ -4,6 +4,9 @@ import MyComponent from './Examples/MyComponents.js';
 import ChildComponent from './Examples/ChildComponents.js';
 import ListTodos from './todos/ListTodos.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <div className="App">
