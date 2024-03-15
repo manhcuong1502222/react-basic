@@ -15,7 +15,7 @@ class AddComponent extends React.Component {
 
     handleChangeSalary = (event) => {
         const value = event.target.value;
-        if (!isNaN(value)) { // Kiểm tra xem giá trị nhập vào có phải là số không
+        if (!isNaN(value)) {
             this.setState({
                 salary: value
             });
@@ -50,7 +50,7 @@ class AddComponent extends React.Component {
                 /><br />
                 <label htmlFor="lname">Salary:</label><br />
                 <input
-                    type="number" // Đổi type thành "number"
+                    type="number"
                     value={this.state.salary}
                     onChange={this.handleChangeSalary}
                 /><br /><br />

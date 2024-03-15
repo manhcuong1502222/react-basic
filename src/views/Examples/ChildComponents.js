@@ -30,8 +30,8 @@ class ChildComponent extends React.Component {
                         <div className="job-lists">
                             {arrJobs.map((item) => (
                                 <div key={item.id}>
-                                    {item.title} - {item.salary}
-                                    <span onClick={() => this.handleOnclickDelete(item)}>$</span>
+                                    {item.title} - {item.salary}$ &#160; &#160; &#160;
+                                    <button onClick={() => this.handleOnclickDelete(item)}>X</button>
                                 </div>
                             ))}
                         </div>
