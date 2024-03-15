@@ -1,64 +1,63 @@
+// AddComponent.js
 import React from 'react';
 
-class AddComponents extends React.Component {
-
+class AddComponent extends React.Component {
     state = {
         title: '',
         salary: '',
-    }
+    };
 
-    handleChangeTitle = (event) => {
+    handleChangeTitleJob = (event) => {
         this.setState({
             title: event.target.value
-        })
-    }
+        });
+    };
 
     handleChangeSalary = (event) => {
-        this.setState({
-            salary: event.target.value
-        })
-    }
+        const value = event.target.value;
+        if (!isNaN(value)) { // Kiểm tra xem giá trị nhập vào có phải là số không
+            this.setState({
+                salary: value
+            });
+        }
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
-
-        if (this.state.title && this.state.salary) {
-            this.props.addNewJob({
-                id: Math.floor(Math.random() * 1001),
-                title: this.state.title,
-                salary: this.state.salary
-            });
-
-            this.setState({
-                title: '',
-                salary: '',
-            });
-        } else {
-            alert('Please fill in both title and salary');
+        if (!this.state.title || !this.state.salary) {
+            alert('Missing required params');
+            return;
         }
-    }
+        this.props.addNewJob({
+            id: Math.floor(Math.random() * 1001),
+            title: this.state.title,
+            salary: this.state.salary
+        });
+        this.setState({
+            title: '',
+            salary: ''
+        });
+    };
 
     render() {
         return (
-            <>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="title">Title Jobs:</label><br />
-                    <input
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.handleChangeTitle} /><br />
-
-                    <label htmlFor="salary">Salary:</label><br />
-                    <input
-                        type="text"
-                        value={this.state.salary}
-                        onChange={this.handleChangeSalary} /><br />
-
-                    <input type="submit" value="Submit" />
-                </form>
-            </>
-        )
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="fname">Job's title:</label><br />
+                <input
+                    type="text"
+                    value={this.state.title}
+                    onChange={this.handleChangeTitleJob}
+                /><br />
+                <label htmlFor="lname">Salary:</label><br />
+                <input
+                    type="number" // Đổi type thành "number"
+                    value={this.state.salary}
+                    onChange={this.handleChangeSalary}
+                /><br /><br />
+                <input type="submit" value="Submit" />
+            </form>
+        );
     }
 }
 
-export default AddComponents;
+export default AddComponent;
