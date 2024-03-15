@@ -1,4 +1,5 @@
 import React from 'react';
+import './ListTodos.scss';
 
 class ListTodos extends React.Component {
 
@@ -17,7 +18,7 @@ class ListTodos extends React.Component {
 
         return (
 
-            <div className='list-todo-container'>
+            <div className='list-games-container'>
                 <div className='add-games'>
                     <input type="text" placeholder="Enter your game" />
                     <button type="button">Add</button>
@@ -34,7 +35,7 @@ class ListTodos extends React.Component {
                         <span>Game 1 	&#160; 	&#160;</span>
                         <button>Edit</button>
                         &#160;
-                        <button>remove</button>
+                        <button>Delete</button>
                     </div>
                     <div className='game-list'>
                         <span>Game 2 	&#160; 	&#160;</span>
@@ -46,7 +47,7 @@ class ListTodos extends React.Component {
                         <span>Game 3 	&#160; 	&#160;</span>
                         <button>Edit</button>
                         &#160;
-                        <button>remove</button>
+                        <button>Delete</button>
                     </div>
 
                 </div>
