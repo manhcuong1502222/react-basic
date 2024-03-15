@@ -13,48 +13,34 @@ class ListTodos extends React.Component {
 
 
     render() {
-
         let { ListGames } = this.state;
 
         return (
-
             <div className='list-games-container'>
                 <div className='add-games'>
                     <input type="text" placeholder="Enter your game" />
-                    <button type="button">Add</button>
-                </div>
-
-                <div className='add-playtime'>
                     <input type="text" placeholder="Enter your playtime" />
                     <button type="button">Add</button>
                 </div>
 
                 <div className='list-game-content'>
-
-                    <div className='game-list'>
-                        <span>Game 1 	&#160; 	&#160;</span>
-                        <button>Edit</button>
-                        &#160;
-                        <button>Delete</button>
-                    </div>
-                    <div className='game-list'>
-                        <span>Game 2 	&#160; 	&#160;</span>
-                        <button>Edit</button>
-                        &#160;
-                        <button>Delete</button>
-                    </div>
-                    <div className='game-list'>
-                        <span>Game 3 	&#160; 	&#160;</span>
-                        <button>Edit</button>
-                        &#160;
-                        <button>Delete</button>
-                    </div>
-
+                    {ListGames && ListGames.length > 0 &&
+                        ListGames.map((item, index) => {
+                            return (
+                                <div className='game-list' key={item.id}>
+                                    <span>{item.title} &#160; &#160;</span>
+                                    <button>Edit</button>
+                                    &#160;
+                                    <button>Delete</button>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-
-        )
+        );
     }
+
 
 
 
