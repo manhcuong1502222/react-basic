@@ -28,7 +28,8 @@ class ListTodos extends React.Component {
                         ListGames.map((item, index) => {
                             return (
                                 <div className='game-list' key={item.id}>
-                                    <span>{item.title} &#160; &#160;</span>
+                                    <span> {index + 1}. {item.title} - {item.Playtime}h &#160; &#160; </span>
+
                                     <button>Edit</button>
                                     &#160;
                                     <button>Delete</button>
@@ -40,10 +41,6 @@ class ListTodos extends React.Component {
             </div>
         );
     }
-
-
-
-
 }
 
 export default ListTodos;
